@@ -6,20 +6,6 @@
 
 using namespace std;
 
-class Billard
-{
-private:
-    float length;
-    float width;
-    float* posXPockets;
-    float* posYPockets;
-    float pocketsRadius;
-public:
-    Billard();
-    Billard(float length, float width, int pocketNb, float* posXPockets,float* posYPockets, float pocketsRadius);
-    ~Billard();
-};
-
 class Boule
 {
 private:
@@ -39,15 +25,31 @@ public:
     Boule(float posX, float posY);
     ~Boule();
     void move(float dirX, float dirY, float dist);
-    bool isInPocket(Billard billard);
-    bool isTouching(Billard billard, Boule boules[]);
-    void bounce(Billard billard, Boule boule);
+    Boule* isTouchingBoule(Boule* boules);
+    void bounce(Boule* boule, int nbBoules);
     void setSpeed(float speedX, float speedY);
+    void updateAccleration(float accelerationX, float accelerationY);
+
+    //show();
 };
 
-
-
-
-
+class Billard
+{
+private:
+    float length;
+    float width;
+    float* posXPockets;
+    float* posYPockets;
+    float pocketsRadius;
+    Boule* boules;
+public:
+    Billard();
+    Billard(float length, float width, int pocketNb, float* posXPockets,float* posYPockets, float pocketsRadius);
+    ~Billard();
+    bool isInPocket(Boule boule);
+    bool isTouchingBillard(Boule boule);
+    void bounce(Boule boule);
+    //show();
+};
 
 #endif

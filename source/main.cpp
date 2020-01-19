@@ -1,7 +1,18 @@
+#include "displayLib.h"
 #include "lib.h"
+/*#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
-int main(int argc, char const *argv[])
+#include <GL/freeglut.h>
+#include <GL/gl.h>
+
+using namespace std;*/
+
+int main(int argc, char** argv)
 {
-    cout << "hello world" << endl;
+    initDisplay(&argc, argv);
     return 0;
 }
+
+//g++ main.c -lglut -lGL -lGLEW -lGLU -o OpenGLExample
